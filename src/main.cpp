@@ -1,4 +1,4 @@
-#include "tee_pot.h"
+#include "tea_pot.h"
 
 
-int main(int argc, char *argv[]) { return TeePot::Run(argc, argv); }
+int main(int argc, char **argv) { return TeaPot::Run(argc, argv); }

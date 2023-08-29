@@ -4,14 +4,14 @@
 #include <fmt/core.h>
 #include <fmt/os.h>
 
-#include "tee_pot.h"
+#include "tea_pot.h"
 
 namespace fs = std::filesystem;
 
 using std::string;
 
 
-int TeePot::Run(int /*argc*/, char ** /*argv*/)
+int TeaPot::Run(int /*argc*/, char ** /*argv*/)
 {
 
   const string project_name = "teepot_test";

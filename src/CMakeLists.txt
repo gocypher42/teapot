@@ -1,2 +1,4 @@
-add_executable(teepot main.cpp tee_pot.cpp)
-target_link_libraries(teepot fmt)
+add_executable(${PROJECT_NAME} main.cpp 
+                      tea_pot.cpp)
+
+target_link_libraries(${PROJECT_NAME} fmt)

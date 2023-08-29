@@ -1,6 +1,6 @@
 #pragma once
 
-class TeePot
+class TeaPot
 {
 public:
   static int Run(int argc, char **argv);
