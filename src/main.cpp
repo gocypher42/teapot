@@ -3,12 +3,12 @@
 class App
 {
 public:
-  int Run(int argc, char *argv[]);
+  static int Run(int argc, char **argv);
 
 private:
 };
 
-int App::Run(int argc, char *argv[])
+int App::Run(int /*argc*/, char ** /*argv*/)
 {
   fmt::print("Hello {}!\n", "World");
 
