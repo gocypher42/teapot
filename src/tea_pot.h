@@ -1,9 +1,13 @@
 #pragma once
 
+#include "tea_pot_args.h"
+
 class TeaPot
 {
 public:
-  static int Run(int argc, char **argv);
+  explicit TeaPot(const TeaPotArgs &args) : m_args(args) {}
+  [[nodiscard]] int Run();
 
 private:
+  TeaPotArgs m_args;
 };

@@ -1,6 +1,7 @@
 #include <filesystem>
 #include <string>
 
+#include <argparse/argparse.hpp>
 #include <fmt/core.h>
 #include <fmt/os.h>
 
@@ -11,8 +12,7 @@ namespace fs = std::filesystem;
 
 using std::string;
 
-
-int TeaPot::Run(int /*argc*/, char ** /*argv*/)
+int TeaPot::Run()
 {
   const string project_name = "teepot_test";
   const fs::path project_dir_path("teepot_test");
@@ -34,7 +34,7 @@ int TeaPot::Run(int /*argc*/, char ** /*argv*/)
   fmt::ostream out_cmake_project =
     fmt::output_file(cmake_project_file_path.string());
   out_cmake_project.print(
-    "{}", Templates::GetProjectCmakeContent(project_name));
+    "{}", Templates::GetProjectCmakeContent(m_args.ProjectName()));
 
   fmt::ostream out_cmake_src = fmt::output_file(cmake_src_file_path.string());
   out_cmake_src.print("{}",

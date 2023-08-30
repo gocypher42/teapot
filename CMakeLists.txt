@@ -24,4 +24,9 @@ FetchContent_Declare(fmt
                      GIT_TAG 10.1.1)
 FetchContent_MakeAvailable(fmt)
 
+FetchContent_Declare(argparse
+                     GIT_REPOSITORY https://github.com/p-ranav/argparse.git
+                     GIT_TAG v2.9)
+FetchContent_MakeAvailable(argparse)
+
 add_subdirectory(src)
