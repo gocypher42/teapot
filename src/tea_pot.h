@@ -5,7 +5,7 @@
 class TeaPot
 {
 public:
-  explicit TeaPot(const TeaPotArgs &args) : m_args(args) {}
+  explicit TeaPot(TeaPotArgs args) : m_args(std::move(args)) {}
   [[nodiscard]] int Run();
 
 private:
