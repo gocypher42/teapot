@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.22.1)
 
 project(teapot
         LANGUAGES CXX
@@ -28,5 +28,10 @@ FetchContent_Declare(argparse
                      GIT_REPOSITORY https://github.com/p-ranav/argparse.git
                      GIT_TAG v2.9)
 FetchContent_MakeAvailable(argparse)
+
+FetchContent_Declare(spdlog
+                     GIT_REPOSITORY https://github.com/gabime/spdlog.git
+                     GIT_TAG v1.12.0)
+FetchContent_MakeAvailable(spdlog)
 
 add_subdirectory(src)
