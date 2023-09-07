@@ -1,5 +1,4 @@
 #include "directory.h"
-
 #include <algorithm>
 #include <fmt/core.h>
 

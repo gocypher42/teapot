@@ -16,7 +16,7 @@ public:
 
   [[nodiscard]] const fs::path &get_path() const { return m_path; }
 
-  [[nodiscard]] virtual bool build(const fs::path &parent_path = "") const = 0;
+  [[nodiscard]] virtual bool build(const fs::path &parent_path) const = 0;
 
 private:
   fs::path m_path;

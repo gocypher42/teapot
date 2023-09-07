@@ -1,7 +1,6 @@
 #pragma once
 
 #include "tea_pot_args.h"
-
 #include <argparse/argparse.hpp>
 
 class TeaPotArgsParser

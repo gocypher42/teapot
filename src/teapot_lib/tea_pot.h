@@ -5,8 +5,10 @@
 class TeaPot
 {
 public:
-  explicit TeaPot(TeaPotArgs args) : m_args(std::move(args)) {}
+  explicit TeaPot(TeaPotArgs args);
+
   [[nodiscard]] int Run();
+  [[nodiscard]] Directory GetProject() const;
 
 private:
   TeaPotArgs m_args;

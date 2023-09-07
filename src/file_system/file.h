@@ -1,8 +1,7 @@
 #pragma once
 
-#include <filesystem>
-
 #include "file_system_node.h"
+#include <filesystem>
 
 namespace fs = std::filesystem;
 
@@ -13,7 +12,7 @@ public:
 
   void set_content(const std::string &content) { m_content = content; }
 
-  [[nodiscard]] bool build(const fs::path &parent_path = "") const override;
+  [[nodiscard]] bool build(const fs::path &parent_path) const override;
 
 private:
   std::string m_content;

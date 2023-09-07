@@ -1,10 +1,9 @@
-#include "directory.h"
 #include "templates.h"
-
+#include "directory.h"
 #include <fmt/core.h>
-
 #include <numeric>
 #include <string>
+#include <vector>
 
 using std::vector;
 using std::accumulate;

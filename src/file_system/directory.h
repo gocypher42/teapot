@@ -1,15 +1,13 @@
 #pragma once
 
-#include <filesystem>
-#include <vector>
-
 #include "file.h"
 #include "file_system_node.h"
+#include <filesystem>
+#include <vector>
 
 namespace fs = std::filesystem;
 
 using std::vector;
-
 
 class Directory final : public FileSystemNode
 {
@@ -25,7 +23,7 @@ public:
   File &add_file(const fs::path &file_path);
   Directory &add_dir(const fs::path &file_path);
 
-  [[nodiscard]] bool build(const fs::path &parent_path = "") const override;
+  [[nodiscard]] bool build(const fs::path &parent_path) const override;
   void print_tree() const;
 
 private:

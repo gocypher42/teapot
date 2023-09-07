@@ -1,5 +1,4 @@
 #include "file.h"
-
 #include <fmt/os.h>
 
 bool File::build(const fs::path &parent_path) const
