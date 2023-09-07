@@ -2,6 +2,8 @@
 
 #include "tea_pot_args.h"
 
+class Directory;
+
 class TeaPot
 {
 public:
