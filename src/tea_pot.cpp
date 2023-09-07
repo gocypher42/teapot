@@ -1,48 +1,23 @@
-#include <filesystem>
-#include <string>
-
-#include <argparse/argparse.hpp>
-#include <fmt/core.h>
-#include <fmt/os.h>
-
 #include "tea_pot.h"
+#include "directory.h"
 #include "templates.h"
 
-namespace fs = std::filesystem;
-
-using std::string;
+#include <fmt/core.h>
 
 int TeaPot::Run()
 {
-  const string project_name = "teepot_test";
-  const fs::path project_dir_path("teepot_test");
-  const fs::path src_dir_path(project_dir_path / "src");
-  const fs::path cmake_project_file_path(project_dir_path / "CMakeLists.txt");
-  const fs::path main_cpp_file_path(src_dir_path / "main.cpp");
-  const fs::path cmake_src_file_path(src_dir_path / "CMakeLists.txt");
+  Directory root(m_args.ProjectName());
 
-  if (!fs::create_directories(project_dir_path)) {
-    fmt::print("Unable to create project dir: {}\n", project_dir_path.string());
-    return -1;
-  }
+  root.add_file("CMakeLists.txt")
+    .set_content(Templates::GetProjectCmakeContent(m_args.ProjectName()));
 
-  if (!fs::create_directories(src_dir_path)) {
-    fmt::print("Unable to create src dir: {}\n", src_dir_path.string());
-    return -1;
-  }
+  Directory &src = root.add_dir("src");
+  src.add_file("main.cpp").set_content(Templates::GetMainCppContent());
+  src.add_file("CMakeLists.txt")
+    .set_content(Templates::GetSrcCmakeContent("main.cpp"));
 
-  fmt::ostream out_cmake_project =
-    fmt::output_file(cmake_project_file_path.string());
-  out_cmake_project.print(
-    "{}", Templates::GetProjectCmakeContent(m_args.ProjectName()));
+  if (!root.build()) { return -1; }
 
-  fmt::ostream out_cmake_src = fmt::output_file(cmake_src_file_path.string());
-  out_cmake_src.print("{}",
-    Templates::GetSrcCmakeContent(main_cpp_file_path.filename().string()));
-
-  fmt::ostream out_main_cpp = fmt::output_file(main_cpp_file_path.string());
-  out_main_cpp.print("{}", Templates::GetMainCppContent());
-
-
+  fmt::print("\tCreated project {}.\n", m_args.ProjectName());
   return 0;
 }

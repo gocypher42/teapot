@@ -1,14 +1,22 @@
 #include "tea_pot_args_parser.h"
 
+const string VERBOSE = "verbose";
+const string PROJECT_NAME = "project-name";
+
 TeaPotArgsParser::TeaPotArgsParser() : m_program("teapot")
 {
-  m_program.add_argument("--verbose")
+  m_program.add_argument("-p", "--" + PROJECT_NAME)
+    .required()
+    .metavar("PROJECT_NAME")
+    .help("Project Name");
+
+  m_program.add_argument("--" + VERBOSE)
     .help("increase output verbosity")
     .default_value(false)
     .implicit_value(true);
 }
 
-bool TeaPotArgsParser::ParseArgs(int argc, char **argv)
+bool TeaPotArgsParser::ParseArgs(int argc, char **argv) noexcept
 {
   try {
     m_program.parse_args(argc, argv);
@@ -23,7 +31,7 @@ bool TeaPotArgsParser::ParseArgs(int argc, char **argv)
 TeaPotArgs TeaPotArgsParser::GetArgs() const
 {
   TeaPotArgs args;
-  args.SetVerbose(m_program.get<bool>("verbose"))
-    .SetProjectName("teapot__test");
+  args.SetVerbose(m_program.get<bool>(VERBOSE))
+    .SetProjectName(m_program.get<string>(PROJECT_NAME));
   return args;
 }
