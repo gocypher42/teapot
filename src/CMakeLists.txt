@@ -1,12 +1,6 @@
-add_executable(${PROJECT_NAME} main.cpp 
-                               directory.cpp
-                               file.cpp
-                               file_system_node.cpp
-                               tea_pot.cpp 
-                               templates.cpp 
-                               tea_pot_args.cpp
-                               tea_pot_args_parser.cpp)
+add_subdirectory(file_system)
+add_subdirectory(teapot_lib)
 
-target_link_libraries(${PROJECT_NAME} fmt 
-                                      argparse
-                                      spdlog)
+add_executable(${PROJECT_NAME} main.cpp)
+target_include_directories(${PROJECT_NAME} PRIVATE teapot_lib)
+target_link_libraries(${PROJECT_NAME} teapot_lib)

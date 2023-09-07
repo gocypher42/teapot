@@ -1,23 +1,28 @@
-#include <numeric>
-#include <string>
+#include "directory.h"
+#include "templates.h"
 
 #include <fmt/core.h>
 
-#include "directory.h"
-#include "templates.h"
+#include <numeric>
+#include <string>
 
 using std::vector;
 using std::accumulate;
 using std::string;
 
-static string Join(const vector<string> &strings, const string &seperator)
+static string Join(const vector<string> &strings, const string &separator)
 {
   return accumulate(strings.begin(),
     strings.end(),
     string(""),
-    [&seperator](const string &accumulation, const string &item) {
-      return accumulation + item + seperator;
+    [&separator](const string &accumulation, const string &item) {
+      return accumulation + item + separator;
     });
+}
+
+static string JoinWithNewLines(const vector<string> &strings)
+{
+  return Join(strings, "\n");
 }
 
 string Templates::GetProjectCmakeContent(const string &project_name)
@@ -53,7 +58,7 @@ string Templates::GetProjectCmakeContent(const string &project_name)
     "add_subdirectory(src)",
   };
 
-  return fmt::format(Join(content, "\n"), project_name);
+  return fmt::format(JoinWithNewLines(content), project_name);
 }
 
 string Templates::GetMainCppContent()
