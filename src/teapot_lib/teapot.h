@@ -1,6 +1,6 @@
 #pragma once
 
-#include "tea_pot_args.h"
+#include "teapot_args.h"
 
 class Directory;
 

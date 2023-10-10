@@ -1,5 +1,5 @@
-#include "tea_pot.h"
-#include "tea_pot_args_parser.h"
+#include "teapot.h"
+#include "teapot_args_parser.h"
 
 int main(int argc, char **argv)
 {

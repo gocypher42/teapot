@@ -1,6 +1,6 @@
-#include "tea_pot.h"
+#include "teapot.h"
 #include "directory.h"
-#include "tea_pot_args.h"
+#include "teapot_args.h"
 #include "templates.h"
 #include <fmt/core.h>
 

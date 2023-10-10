@@ -4,12 +4,12 @@
 
 using std::string;
 
-class Templates
+class Templates final
 {
 public:
+  Templates() = delete;
+
   static string GetProjectCmakeContent(const string &project_name);
   static string GetMainCppContent();
   static string GetSrcCmakeContent(const string &main_cpp_file);
-
-private:
 };
