@@ -1,6 +1,7 @@
 # User defines
 build
 .cache
+.vscode
 
 # Prerequisites
 *.d
