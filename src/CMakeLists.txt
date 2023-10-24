@@ -1,4 +1,3 @@
-add_subdirectory(file_system)
 add_subdirectory(teapot_lib)
 
 add_executable(${PROJECT_NAME} main.cpp)

@@ -1,5 +1,5 @@
 #include "templates.h"
-#include "directory.h"
+// #include "directory.h"
 #include <fmt/core.h>
 #include <numeric>
 #include <string>
@@ -9,7 +9,9 @@ using std::vector;
 using std::accumulate;
 using std::string;
 
-static string Join(const vector<string> &strings, const string &separator)
+namespace {
+
+string Join(const vector<string> &strings, const string &separator)
 {
   return accumulate(strings.begin(),
     strings.end(),
@@ -19,10 +21,12 @@ static string Join(const vector<string> &strings, const string &separator)
     });
 }
 
-static string JoinWithNewLines(const vector<string> &strings)
+string JoinWithNewLines(const vector<string> &strings)
 {
   return Join(strings, "\n");
 }
+
+}// namespace
 
 string Templates::GetProjectCmakeContent(const string &project_name)
 {
@@ -67,7 +71,7 @@ string Templates::GetMainCppContent()
     "",
     "int main()",
     "{",
-    "  fmt::print(\"Hello {}!\\n\", \"World\");",
+    R"(  fmt::print("Hello {}!\n", "World");)",
     "  return 0;",
     "}",
   };

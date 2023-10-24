@@ -1,31 +1,37 @@
 #include "teapot.h"
-#include "directory.h"
+#include "project_builder.h"
+#include "project_tree.h"
 #include "teapot_args.h"
 #include "templates.h"
 #include <fmt/core.h>
 
 TeaPot::TeaPot(TeaPotArgs args) : m_args(std::move(args)) {}
 
-int TeaPot::Run()
+int TeaPot::Run() const
 {
-  const Directory project = GetProject();
-
-  if (!project.build("")) { return -1; }
-
-  fmt::print("\tCreated project {}.\n", m_args.ProjectName());
+  const ProjectTree project = MakeProject();
+  ProjectBuilder::BuildProjectTree(project);
   return 0;
 }
 
-Directory TeaPot::GetProject() const
+ProjectTree TeaPot::MakeProject() const
 {
-  Directory project(m_args.ProjectName());
+  const string cmake_file_name = "CMakeLists.txt";
 
-  project.add_file("CMakeLists.txt")
-    .set_content(Templates::GetProjectCmakeContent(m_args.ProjectName()));
+  ProjectTree project_tree(m_args.ProjectName());
+  ProjectDir &root_dir = project_tree.get_root();
 
-  Directory &src = project.add_dir("src");
-  src.add_file("main.cpp").set_content(Templates::GetMainCppContent());
-  src.add_file("CMakeLists.txt")
-    .set_content(Templates::GetSrcCmakeContent("main.cpp"));
-  return project;
+  ProjectFile root_cmake = root_dir.add_file(cmake_file_name);
+  root_cmake.set_content(
+    Templates::GetProjectCmakeContent(m_args.ProjectName()));
+
+  ProjectDir src_dir = root_dir.add_dir("src");
+
+  ProjectFile src_main = src_dir.add_file("main.cpp");
+  src_main.set_content(Templates::GetMainCppContent());
+
+  ProjectFile src_cmake = src_dir.add_file(cmake_file_name);
+  src_cmake.set_content(Templates::GetSrcCmakeContent("main.cpp"));
+
+  return project_tree;
 }
