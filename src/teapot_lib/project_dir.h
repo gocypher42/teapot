@@ -25,7 +25,7 @@ public:
 
     if (existing_file != m_files.cend()) {
       throw std::invalid_argument(
-        fmt::format("ProjectFile {} already exist inside ProjectDir {}",
+        fmt::format("ProjectFile {} already exists inside ProjectDir {}",
           file_name,
           m_name));
     }
@@ -43,7 +43,7 @@ public:
 
     if (existing_dir != m_directories.cend()) {
       throw std::invalid_argument(fmt::format(
-        "ProjectDir {} already exist inside ProjectDir {}", dir_name, m_name));
+        "ProjectDir {} already exists inside ProjectDir {}", dir_name, m_name));
     }
 
     m_directories.emplace_back(dir_name);
