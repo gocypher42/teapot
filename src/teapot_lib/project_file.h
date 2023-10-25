@@ -11,6 +11,7 @@ public:
 
   void set_content(const std::string &content) noexcept { m_content = content; }
   [[nodiscard]] const string &get_name() const noexcept { return m_name; }
+  [[nodiscard]] const string &get_content() const noexcept { return m_content; }
 
 private:
   string m_name;

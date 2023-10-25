@@ -1,7 +1,10 @@
 #include "teapot_args_parser.h"
+#include <string>
 
-const string VERBOSE = "verbose";
-const string PROJECT_NAME = "project-name";
+using std::string;
+
+const string TeaPotArgsParser::VERBOSE = "verbose";
+const string TeaPotArgsParser::PROJECT_NAME = "project-name";
 
 TeaPotArgsParser::TeaPotArgsParser() : m_program("teapot")
 {

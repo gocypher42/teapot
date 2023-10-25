@@ -2,8 +2,11 @@
 
 #include "teapot_args.h"
 #include <argparse/argparse.hpp>
+#include <string>
 
-class TeaPotArgsParser
+using std::string;
+
+class TeaPotArgsParser final
 {
 public:
   TeaPotArgsParser();
@@ -11,5 +14,8 @@ public:
   [[nodiscard]] TeaPotArgs GetArgs() const;
 
 private:
+  static const string VERBOSE;
+  static const string PROJECT_NAME;
+
   argparse::ArgumentParser m_program;
 };

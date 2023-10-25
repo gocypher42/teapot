@@ -14,8 +14,11 @@ public:
   {}
 
   [[nodiscard]] ProjectDir &get_root() noexcept { return m_origin_dir; }
+  [[nodiscard]] const ProjectDir &get_root() const noexcept
+  {
+    return m_origin_dir;
+  }
 
 private:
   ProjectDir m_origin_dir;
 };
-

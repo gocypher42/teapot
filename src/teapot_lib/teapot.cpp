@@ -21,16 +21,16 @@ ProjectTree TeaPot::MakeProject() const
   ProjectTree project_tree(m_args.ProjectName());
   ProjectDir &root_dir = project_tree.get_root();
 
-  ProjectFile root_cmake = root_dir.add_file(cmake_file_name);
+  ProjectFile& root_cmake = root_dir.add_file(cmake_file_name);
   root_cmake.set_content(
     Templates::GetProjectCmakeContent(m_args.ProjectName()));
 
-  ProjectDir src_dir = root_dir.add_dir("src");
+  ProjectDir& src_dir = root_dir.add_dir("src");
 
-  ProjectFile src_main = src_dir.add_file("main.cpp");
+  ProjectFile& src_main = src_dir.add_file("main.cpp");
   src_main.set_content(Templates::GetMainCppContent());
 
-  ProjectFile src_cmake = src_dir.add_file(cmake_file_name);
+  ProjectFile& src_cmake = src_dir.add_file(cmake_file_name);
   src_cmake.set_content(Templates::GetSrcCmakeContent("main.cpp"));
 
   return project_tree;
