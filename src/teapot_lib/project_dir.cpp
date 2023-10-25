@@ -21,7 +21,7 @@ ProjectFile &ProjectDir::add_file(const std::string &file_name)
 
   if (existing_file != m_files.cend()) {
     throw std::invalid_argument(fmt::format(
-      "ProjectFile {} already exist inside ProjectDir {}", file_name, m_name));
+      "ProjectFile {} already exists inside ProjectDir {}", file_name, m_name));
   }
 
   m_files.emplace_back(file_name);
@@ -36,7 +36,7 @@ ProjectDir &ProjectDir::add_dir(const std::string &dir_name)
 
   if (existing_dir != m_directories.cend()) {
     throw std::invalid_argument(fmt::format(
-      "ProjectDir {} already exist inside ProjectDir {}", dir_name, m_name));
+      "ProjectDir {} already exists inside ProjectDir {}", dir_name, m_name));
   }
 
   m_directories.emplace_back(dir_name);
