@@ -4,6 +4,7 @@
 #include <fmt/core.h>
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 using std::vector;
 using std::string;
