@@ -5,7 +5,7 @@
 
 class Directory;
 
-class TeaPot
+class TeaPot final
 {
 public:
   explicit TeaPot(TeaPotArgs args);

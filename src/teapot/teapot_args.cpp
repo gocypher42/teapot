@@ -14,3 +14,5 @@ TeaPotArgs &TeaPotArgs::SetProjectName(const string &project_name)
   m_project_name = project_name;
   return *this;
 }
+
+const string &TeaPotArgs::ProjectName() const noexcept { return m_project_name; }
