@@ -1,1 +1,3 @@
+add_subdirectory(project_builder)
+add_subdirectory(file_templates)
 add_subdirectory(teapot)
