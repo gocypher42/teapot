@@ -4,7 +4,7 @@
 
 using std::string;
 
-class TeaPotArgs
+class TeaPotArgs final
 {
 public:
   TeaPotArgs() = default;
@@ -12,7 +12,7 @@ public:
   TeaPotArgs &SetVerbose(bool verbose);
   TeaPotArgs &SetProjectName(const string &m_project_name);
 
-  [[nodiscard]] const string &ProjectName() const { return m_project_name; }
+  [[nodiscard]] const string &ProjectName() const noexcept;
 
 private:
   bool m_verbose = false;
