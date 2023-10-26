@@ -5,6 +5,11 @@ using std::string;
 
 ProjectFile::ProjectFile(string file_name) : m_name(std::move(file_name)){};
 
+void ProjectFile::set_name(const std::string &name) noexcept
+{
+  m_name = name;
+}
+
 void ProjectFile::set_content(const std::string &content) noexcept
 {
   m_content = content;
