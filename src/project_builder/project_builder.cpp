@@ -1,10 +1,11 @@
 #include "project_builder.h"
-#include "project_dir.h"
-#include "project_file.h"
+#include "directory.h"
 #include "project_tree.h"
 #include <filesystem>
 #include <fmt/core.h>
 #include <fstream>
+
+namespace og {
 
 namespace fs = std::filesystem;
 
@@ -14,7 +15,7 @@ void ProjectBuilder::BuildProjectTree(const ProjectTree &project_tree)
 }
 
 void ProjectBuilder::BuildDirectory(const fs::path &location,
-  const ProjectDir &dir)
+  const Directory &dir)
 {
   const fs::path dir_location = location / dir.get_name();
   if (!fs::create_directories(dir_location)) {
@@ -31,8 +32,7 @@ void ProjectBuilder::BuildDirectory(const fs::path &location,
   for (const auto &file : dir.get_files()) { BuildFile(dir_location, file); }
 }
 
-void ProjectBuilder::BuildFile(const fs::path &location,
-  const ProjectFile &file)
+void ProjectBuilder::BuildFile(const fs::path &location, const File &file)
 {
   fmt::print("{}", file.get_content());
   const fs::path file_location = location / file.get_name();
@@ -46,3 +46,5 @@ void ProjectBuilder::BuildFile(const fs::path &location,
   outfile << file.get_content();
   outfile.close();
 }
+
+}// namespace og

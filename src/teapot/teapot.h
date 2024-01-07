@@ -3,8 +3,6 @@
 #include "project_tree.h"
 #include "teapot_args.h"
 
-class Directory;
-
 class TeaPot final
 {
 public:

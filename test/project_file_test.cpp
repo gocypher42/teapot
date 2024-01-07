@@ -1,24 +1,26 @@
-#include "project_file.h"
+#include "file.h"
 #include <gtest/gtest.h>
 
-TEST(ProjectFileConstrutorTest, ValidateConstrutorWithOnlyAName)
+using og::File;
+
+TEST(FileConstrutorTest, ValidateConstrutorWithOnlyAName)
 {
-  ProjectFile file("file.txt");
+  File file("file.txt");
 
   EXPECT_EQ(file.get_name(), "file.txt");
   EXPECT_EQ(file.get_content(), "");
 }
 
-TEST(ProjectFileNameSetterTest, ValidateSetterName)
+TEST(FileNameSetterTest, ValidateSetterName)
 {
-  ProjectFile file("");
+  File file("");
   file.set_name("file.txt");
   EXPECT_EQ(file.get_name(), "file.txt");
 }
 
-TEST(ProjectFileContentSetterTest, ValidateSetterContent)
+TEST(FileContentSetterTest, ValidateSetterContent)
 {
-  ProjectFile file("file.txt");
+  File file("file.txt");
   file.set_content("content");
   EXPECT_EQ(file.get_content(), "content");
 }

@@ -1,20 +1,22 @@
 #pragma once
 
+#include "node.h"
 #include <string>
+
+namespace og {
 
 using std::string;
 
-class ProjectFile final
+class File final : public Node
 {
 public:
-  explicit ProjectFile(string file_name);
+  explicit File(string file_name);
 
-  void set_name(const std::string &name) noexcept;
   void set_content(const std::string &content) noexcept;
-  [[nodiscard]] const string &get_name() const noexcept;
   [[nodiscard]] const string &get_content() const noexcept;
 
 private:
-  string m_name;
   string m_content;
 };
+
+}// namespace og
